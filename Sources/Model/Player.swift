@@ -67,6 +67,7 @@ final class Player {
         setupSession()
         setupRemoteCommands()
         if config.sleepInTS > Date().timeIntervalSince1970 * 1000 { startSleepTimer() } else { config.sleepInTS = 0 }
+        DispatchQueue.main.async { MainActor.assumeIsolated { MusicPlayerWidgetData.playerCreated() } }
     }
 
     // MARK: Session & system integration
